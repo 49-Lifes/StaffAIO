@@ -9,6 +9,10 @@ eval:
   mute-score: 2.5
   ipmute-score: 4.5
 
+  racism-score: 2
+  slurs-score: 1
+  duping-score: 3
+
 hooks:
   discord:
     enabled: false

@@ -7,7 +7,6 @@ import info.preva1l.staffaio.logging.User;
 import org.jetbrains.annotations.Blocking;
 
 import java.time.Instant;
-import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Optional;
@@ -63,6 +62,24 @@ public class EvaluationManager {
                 case IP_BAN -> score += plugin.getSettings().getInt("eval.ipban-score");
                 case MUTE -> score += plugin.getSettings().getInt("eval.mute-score");
                 case IP_MUTE -> score += plugin.getSettings().getInt("eval.ipmute-score");
+            }
+
+            // racism check
+            if (log.getReason().toLowerCase().contains("racism")
+                    || log.getReason().toLowerCase().contains("racist")
+                    || log.getReason().toLowerCase().contains("racial")) {
+                score += plugin.getSettings().getInt("eval.racism-score");
+            }
+
+            // slur check
+            if (log.getReason().toLowerCase().contains("slur")) {
+                score += plugin.getSettings().getInt("eval.slurs-score");
+            }
+
+            // dupe check
+            if (log.getReason().toLowerCase().contains("dupe")
+                    || log.getReason().toLowerCase().contains("duping")) {
+                score += plugin.getSettings().getInt("eval.duping-score");
             }
         }
 

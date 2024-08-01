@@ -13,7 +13,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
 
 public final class LitebansHook extends Hook {
     public LitebansHook() {
@@ -43,9 +42,10 @@ public final class LitebansHook extends Hook {
                     final UUID punishedUUID = UUID.fromString(rs.getString("uuid"));
                     final User punished = new User(Database.get().getPlayerName(punishedUUID), punishedUUID);
                     final Punishment punishment = rs.getBoolean("ipban") ? Punishment.IP_BAN : Punishment.BAN;
+                    final String reason = rs.getString("reason");
                     final long startDate = rs.getLong("time");
                     final long endDate = rs.getLong("until");
-                    returnValue.add(new Log(staff, punished, punishment, startDate, endDate));
+                    returnValue.add(new Log(staff, punished, punishment, reason, startDate, endDate));
                 }
             }
         } catch (SQLException e) {
@@ -64,9 +64,10 @@ public final class LitebansHook extends Hook {
                     final UUID punishedUUID = UUID.fromString(rs.getString("uuid"));
                     final User punished = new User(Database.get().getPlayerName(punishedUUID), punishedUUID);
                     final Punishment punishment = rs.getBoolean("ipban") ? Punishment.IP_MUTE : Punishment.MUTE;
+                    final String reason = rs.getString("reason");
                     final long startDate = rs.getLong("time");
                     final long endDate = rs.getLong("until");
-                    returnValue.add(new Log(staff, punished, punishment, startDate, endDate));
+                    returnValue.add(new Log(staff, punished, punishment, reason, startDate, endDate));
                 }
             }
         } catch (SQLException e) {
