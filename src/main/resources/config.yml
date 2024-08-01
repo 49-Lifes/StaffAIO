@@ -1,0 +1,10 @@
+staffchat:
+  format: "&b&lStaffChat &r%rank% &f%player%: &b%message%"
+  join: "&b&lStaffChat &a+ &r%rank% &f%player%"
+  leave: "&b&lStaffChat &c- &r%rank% &f%player%"
+
+hooks:
+  discord:
+    enabled: false
+    webhook: "URL goes here"
+    skin-api: "https://mineskin.eu/helm/%username%" # %uuid% or %username%

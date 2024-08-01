@@ -1,0 +1,9 @@
+name: StaffAIO
+description: A staff all in one system.
+version: '${version}'
+main: info.preva1l.staffaio.StaffAIO
+api-version: '1.16'
+author: Preva1l
+softdepend:
+  - LiteBans
+  - PlaceholderAPI
