@@ -4,6 +4,7 @@ import info.preva1l.staffaio.StaffAIO;
 import info.preva1l.staffaio.utils.CommandMapUtil;
 import info.preva1l.staffaio.utils.TaskManager;
 import lombok.Getter;
+import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.command.defaults.BukkitCommand;
@@ -71,6 +72,10 @@ public class CommandManager {
             // Primary argument
             if (args.length <= 1) {
                 List<String> completors = basicCommand.tabComplete(sender, args);
+
+                if (completors == null) {
+                    return List.of();
+                }
 
                 if (completors.isEmpty() && !basicCommand.getSubCommands().isEmpty()) {
                     List<String> ret = new ArrayList<>();

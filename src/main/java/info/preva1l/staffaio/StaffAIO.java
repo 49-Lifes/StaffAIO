@@ -1,5 +1,7 @@
 package info.preva1l.staffaio;
 
+import info.preva1l.staffaio.evaluation.EvaluationManager;
+import info.preva1l.staffaio.evaluation.commands.EvaluationCommand;
 import info.preva1l.staffaio.hooks.HookManager;
 import info.preva1l.staffaio.hooks.impl.DiscordHook;
 import info.preva1l.staffaio.hooks.impl.LitebansHook;
@@ -22,12 +24,14 @@ public final class StaffAIO extends JavaPlugin {
     @Getter private CommandManager commandManager;
     @Getter private HookManager hookManager;
     @Getter private StaffChatManager staffChatManager;
+    @Getter private EvaluationManager evaluationManager;
 
     @Override
     public void onEnable() {
         instance = this;
 
         staffChatManager = new StaffChatManager(this);
+        evaluationManager = new EvaluationManager(this);
         settings = new BasicConfig(this, "config.yml");
 
         loadHooks();
@@ -46,7 +50,8 @@ public final class StaffAIO extends JavaPlugin {
 
         Stream.of(
                 new StaffChatCommand(this),
-                new StaffAIOCommand(this)
+                new StaffAIOCommand(this),
+                new EvaluationCommand(this)
         ).forEach(commandManager::registerCommand);
     }
 

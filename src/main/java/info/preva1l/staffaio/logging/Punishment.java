@@ -4,7 +4,5 @@ public enum Punishment {
     MUTE,
     IP_MUTE,
     BAN,
-    IP_BAN,
-    WARN,
-    KICK
+    IP_BAN
 }

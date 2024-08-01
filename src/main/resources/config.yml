@@ -3,6 +3,12 @@ staffchat:
   join: "&b&lStaffChat &a+ &r%rank% &f%player%"
   leave: "&b&lStaffChat &c- &r%rank% &f%player%"
 
+eval:
+  ban-score: 5
+  ipban-score: 9
+  mute-score: 2.5
+  ipmute-score: 4.5
+
 hooks:
   discord:
     enabled: false
