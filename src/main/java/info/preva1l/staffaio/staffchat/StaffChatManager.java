@@ -51,10 +51,10 @@ public class StaffChatManager {
             if (!player.hasPermission("staffaio.staffchat")) continue;
 
             player.sendMessage(Text.message(format(user, message)));
-
-            plugin.getHookManager().getHook(DiscordHook.class)
-                    .ifPresent(hook -> hook.sendStaffChatMessage(user, message));
         }
+
+        plugin.getHookManager().getHook(DiscordHook.class)
+                .ifPresent(hook -> hook.sendStaffChatMessage(user, message));
     }
 
     public void sendJoin(User user) {
@@ -69,10 +69,10 @@ public class StaffChatManager {
             player.sendMessage(Text.message(plugin.getSettings().getString("staffchat.join")
                     .replace("%player%", user.getUsername())
                     .replace("%rank%", rank)));
-
-            plugin.getHookManager().getHook(DiscordHook.class)
-                    .ifPresent(hook -> hook.sendStaffChatJoin(user));
         }
+
+        plugin.getHookManager().getHook(DiscordHook.class)
+                .ifPresent(hook -> hook.sendStaffChatJoin(user));
     }
 
     public void sendLeave(User user) {
@@ -87,10 +87,10 @@ public class StaffChatManager {
             player.sendMessage(Text.message(plugin.getSettings().getString("staffchat.leave")
                     .replace("%player%", user.getUsername())
                     .replace("%rank%", rank)));
-
-            plugin.getHookManager().getHook(DiscordHook.class)
-                    .ifPresent(hook -> hook.sendStaffChatLeave(user));
         }
+
+        plugin.getHookManager().getHook(DiscordHook.class)
+                .ifPresent(hook -> hook.sendStaffChatLeave(user));
     }
 
     public boolean toggleStaffChat(User player) {
