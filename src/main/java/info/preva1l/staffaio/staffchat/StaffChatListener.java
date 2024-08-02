@@ -28,12 +28,14 @@ public class StaffChatListener implements Listener {
     @EventHandler(priority = EventPriority.MONITOR)
     public void onJoin(PlayerJoinEvent event) {
         User user = User.adapt(event.getPlayer());
+        if (!event.getPlayer().hasPermission("staffaio.staffchat")) return;
         plugin.getStaffChatManager().sendJoin(user);
     }
 
     @EventHandler(priority = EventPriority.MONITOR)
     public void onLeave(PlayerQuitEvent event) {
         User user = User.adapt(event.getPlayer());
+        if (!event.getPlayer().hasPermission("staffaio.staffchat")) return;
         plugin.getStaffChatManager().sendLeave(user);
     }
 }
